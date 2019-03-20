@@ -1,0 +1,18 @@
+#!/bin/bash
+
+name="$(basename $0)"
+usage="USAGE: $name"
+
+if [ $# -ne 0 ]
+then
+	echo -e "$usage"
+	exit
+fi
+
+for f in logRun*
+do
+	echo -e "\n#####Showing $f"; cat $f | tail
+        
+done
+
+	

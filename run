@@ -1,0 +1,23 @@
+#!/bin/bash
+
+name="$(basename $0)"
+usage="USAGE: $name [numberRuns]"
+if [ $# -eq 0 ]
+then
+	echo -e "$usage\nRunning with default: 15 runs"
+else
+	if [ $# -gt 1 ]
+	then
+		echo "$usage"
+		exit
+	fi
+fi
+
+n="$1"
+echo "Running $n runs"
+
+for ((i=1;i<=$n;i++))
+do
+	echo -e "Run $i"
+	python3 start.py -s StudentAgent -v -d 0 &> logRun$i.txt
+done
